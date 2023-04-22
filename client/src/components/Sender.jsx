@@ -21,7 +21,6 @@ export default function Sender() {
     loadWaste();
   }, []);
 
-  
 // connecting to Hedera and creating a client
 const REACT_APP_MY_ACCOUNT_ID='0.0.4290410';
 const REACT_APP_MY_PRIVATE_KEY='0x2b1ca838559adc994d631b6c03dbbccc911bf4a6d3bfaddc9336a26f2f1c453f';
@@ -54,12 +53,6 @@ console.log('metamsk address from usecontext is', metamaskAccountAddress);
   // const rpcUrl = "https://testnet.hashio.io/api";
 
   async function loadWaste() {
-    const [account, setAccount] = useState();
-    
-    const wallets = await onboard.connectWallet();
-    const { accounts, } = wallets[0];
-    setAccount(accounts[0].address);
-
     /* create a generic provider and query for Wastes */
     const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
     const contract = new ethers.Contract(UndoContractAddress, Waste.abi, provider);
