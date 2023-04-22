@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import coinbaseWalletModule from "@web3-onboard/coinbase";
 import walletConnectModule from "@web3-onboard/walletconnect";
 import injectedModule from "@web3-onboard/injected-wallets";
 import Onboard from "@web3-onboard/core";
 import { useNavigate } from "react-router-dom";
 import logo1 from "../assets/banner.jpg";
+import { GlobalAppContext } from '../contexts/GlobalAppContext';
+import { connectToMetamask } from '../services/metamaskService';
 
 const coinbaseWalletSdk = coinbaseWalletModule();
 const walletConnect = walletConnectModule();
@@ -12,24 +14,16 @@ const injected = injectedModule();
 
 const modules = [coinbaseWalletSdk, walletConnect, injected];
 
-const MAINNET_RPC_URL = "https://api.node.glif.io";
-const TESTNET_RPC_URL = "https://api.hyperspace.node.glif.io/rpc/v1";
+const TESTNET_RPC_URL = "https://testnet.hashio.io/api";
 
 const onboard = Onboard({
   wallets: modules, // created in previous step
   chains: [
     {
-      id: "0x314", // chain ID must be in hexadecimel
-      token: "MATIC",
+      id: "0x128",
+      token: "HBAR",
       namespace: "evm",
-      label: "Filecoin Mainnet",
-      rpcUrl: MAINNET_RPC_URL
-    },
-    {
-      id: "0x3141",
-      token: "Matic",
-      namespace: "evm",
-      label: "Filecoin Hyperspace",
+      label: "Hedera Testnet",
       rpcUrl: TESTNET_RPC_URL
     },
   ],
@@ -48,6 +42,18 @@ const onboard = Onboard({
 const Welcome = () => {
   const navigate = useNavigate();
   const [account, setAccount] = useState();
+
+    // use the GlobalAppContext to keep track of the metamask account connection
+    const { metamaskAccountAddress, setMetamaskAccountAddress } = useContext(GlobalAppContext);
+
+    const retrieveWalletAddress = async () => {
+      const addresses = await connectToMetamask();
+      if (addresses) {
+        // grab the first wallet address
+        setMetamaskAccountAddress(addresses[0]);
+        console.log(addresses[0]);
+      }
+    }
 
   const connectWallet2 = async () => {
     try {
@@ -71,7 +77,7 @@ const Welcome = () => {
             ... saving our Planet through community service
           </p>
           </h1><br />
-          <p className="text-left mt-5 text-white font-light text-4xl ">
+          <p className="text-left mt-5 text-white font-light text-3xl ">
             Stopping Deforestation, <br /> Promoting Community Support <br />for Sustainability. <br /> Help our Environment <br /> and get rewarded
           </p><br />
           <p className="text-left mt-5 font-light text-2xl text-yellow-400">
@@ -82,21 +88,16 @@ const Welcome = () => {
             Connect your wallet, submit details of your <br /> enviromental waste, recyclers go to the <br />  marketplaceplace  and recycle  waste close to their location...
           </p><br />
            {!currentAccount && ( )} */}
+
           <button
             type="button"
-            onClick={connectWallet2}
-            className="flex flex-row justify-center items-center my-5 bg-green-300 p-3 rounded-full cursor-pointer hover:bg-green-800 hover:text-white"
+            onClick={retrieveWalletAddress}
+            className="flex flex-row justify-center items-center mx-10 my-10 bg-green-300 p-3 rounded-full cursor-pointer hover:bg-green-800 hover:text-white text-black text-3xl font-semibold py-5 px-10"
           >
-
-            <p className="text-black text-3xl font-semibold py-3 px-10 mx-14 hover:text-white hover:text-white">
-              Connect Wallet
-            </p>
+          {metamaskAccountAddress === "" ?
+            "Connect to MetaMask" :
+            `Connected to: ${metamaskAccountAddress.substring(0, 6)}...${metamaskAccountAddress.substring(metamaskAccountAddress.length - 4)}`}
           </button>
-
-          <div className="text-white text-2xl font-semibold mx-4 my-5 ">
-            <div>Connected Wallet Address: <br /> {account}</div>
-          </div>
-
         </div>
       </div>
       <div className="sm:flex-[0.9] lg:flex-[0.9]flex-initial justify-left items-center">

@@ -23,7 +23,7 @@ export default function Sender() {
     return ipfsGateWayURL;
   };
 
-  const rpcUrl = "https://api.hyperspace.node.glif.io/rpc/v1";
+  const rpcUrl = "https://testnet.hashio.io/api";
   // const rpcUrl = "http://localhost:8545";
 
   async function loadWaste() {
