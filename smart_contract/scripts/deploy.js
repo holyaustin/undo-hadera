@@ -1,7 +1,10 @@
 const hre = require("hardhat");
 const fs = require('fs');
+const { ethers } = require("hardhat");
 
 async function main() {
+  let wallet = (await ethers.getSigners())[0];
+
   const UndoContract = await hre.ethers.getContractFactory("UndoForest");
   const Undo = await UndoContract.deploy();
   await Undo.deployed();

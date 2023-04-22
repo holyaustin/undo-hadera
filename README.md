@@ -25,7 +25,7 @@ Project initiated and created for Hackathon: HackDW3C Duke Web3 Conference's off
 
 Live Dapp - https://undo-hadera.vercel.app/
 
-Deployed to Hedera: 0x
+Deployed to Hedera: 0x3eBaa13aD0083566C8A112F24fA6FA4254526e4D
 
 ## Sponsors
 Hedera - 
