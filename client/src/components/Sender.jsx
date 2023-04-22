@@ -146,7 +146,7 @@ console.log('metamsk address from usecontext is', metamaskAccountAddress);
               <div className="p-2 bg-black">
                 <button type="button" className="mt-4 w-full bg-green-500 text-white font-bold py-2 px-12 rounded" 
                         onClick={() => {
-                          sendHbar(client, myAccountId, AccountId.fromEvmAddress(0, 0, metamaskAccountAddress), 1, myPrivateKey)
+                          sendHbar(client, metamaskAccountAddress, AccountId.fromEvmAddress(0, 0, '0x3eBaa13aD0083566C8A112F24fA6FA4254526e4D'), 1, myPrivateKey)
                         }}>
                   Contribute
                 </button>
