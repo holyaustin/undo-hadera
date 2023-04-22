@@ -21,17 +21,17 @@ Frontend: vite, postcss, tailwindcss,
 web3 technologies: IPFS/filecoin, coinbase wallet, metamask, NFT.Storage, Co2.storage
 Backend: Solidity, Node.js
 
-Project initiated and created for Hackathon: Protocol Labs (Filecoin Green)-Sustainable Blockchain Hackathon 
+Project initiated and created for Hackathon: HackDW3C Duke Web3 Conference's official hackathon!
 
-Live Dapp - https://undoproject.vercel.app/
+Live Dapp - https://undo-hadera.vercel.app/
 
-Deployed to Filecoin Hyperspace: 0x56805DB034dc3675ae363ef7bD6FDA7714b6f19B
+Deployed to Hedera: 0x
 
 ## Sponsors
-Filecoin Green - https://green.filecoin.io/
-Climate Collective - https://climatecollective.org/
-Hyphen - https://www.hyphen.earth/
-The Hbar Foundation - https://www.hbarfoundation.org/
+Hedera - 
+CESS - 
+Kaleido - 
+Stych - 
 
 
 ## Connect with me and send me a mail
