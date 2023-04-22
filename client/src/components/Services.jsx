@@ -27,17 +27,17 @@ const Services = () => (
           Areas of Interest to our Community to Save Our Planet
           <br /> <br />
         </h1>
-        <p className="text-left my-2 text-white font-light md:w-11/12 w-11/12 text-2xl text-justify">
+        <p className="my-2 text-white font-light md:w-11/12 w-11/12 text-2xl text-justify">
 
 
 
         </p>
         <br />
-        <p className="text-left my-2 text-white font-light md:w-11/12 w-11/12 text-2xl text-justify">
+        <p className=" my-2 text-white font-light md:w-11/12 w-11/12 text-2xl text-justify">
         To ensure climate sustainability, we need to reduce deforestation by implementing sustainable forest management practices. This involves promoting the use of alternative sources of energy, such as solar and wind power, and reducing the demand for products that are made from deforested areas.
         </p>
         <br />
-        <p className="text-left my-2 text-white font-light md:w-11/12 w-11/12 text-2xl text-justify">
+        <p className=" my-2 text-white font-light md:w-11/12 w-11/12 text-2xl text-justify">
 Additionally, reforestation efforts should be undertaken to restore damaged forests and increase carbon sequestration. Forest conservation and restoration can also help to maintain biodiversity, prevent soil erosion, and protect watersheds, which are all critical for supporting healthy ecosystems and human communities.
         </p>
         <br />

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Waste from "../utils/Waste.json";
-import { UndoContractAddress } from "../../config";
+import { UndoContractAddress } from "../../config2";
 
 // eslint-disable-next-line max-len
 const APIKEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDA4Zjc4ODAwMkUzZDAwNEIxMDI3NTFGMUQ0OTJlNmI1NjNFODE3NmMiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1MzA1NjE4NzM4MCwibmFtZSI6InBlbnNpb25maSJ9.agI-2V-FeK_eVRAZ-T6KGGfE9ltWrTUQ7brFzzYVwdM";
@@ -60,7 +60,7 @@ const MintWaste = () => {
 
   const sendTxToBlockchain = async (metadata) => {
     try {
-      setTxStatus("Adding transaction to Polygon Mumbai Blockchain.");
+      setTxStatus("Adding transaction to Blockchain.");
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
@@ -75,7 +75,7 @@ const MintWaste = () => {
       // await mintNFTTx.wait();
       return mintNFTTx;
     } catch (error) {
-      setErrorMessage("Failed to send tx to Polygon Mumbai.");
+      setErrorMessage("Failed to send tx to Blockchain.");
       console.log(error);
     }
   };
@@ -86,7 +86,7 @@ const MintWaste = () => {
     console.log("image ipfs path is", imgViewString);
     setImageView(imgViewString);
     setMetaDataURl(getIPFSGatewayURL(metaData.url));
-    setTxURL(`https://mumbai.polygonscan.com/tx/${mintNFTTx.hash}`);
+    setTxURL(`https://hashscan.io/testnet/tx/${mintNFTTx.hash}`);
     setTxStatus("Waste registration was successfully!");
     console.log("Preview details completed");
   };
@@ -96,7 +96,7 @@ const MintWaste = () => {
     // 1. upload NFT content via NFT.storage
     const metaData = await uploadNFTContent(uploadedFile);
 
-    // 2. Mint a NFT token on Polygon
+    // 2. Mint a NFT token on Blockchain
     const mintNFTTx = await sendTxToBlockchain(metaData);
 
     // 3. preview the minted nft
@@ -155,7 +155,7 @@ const MintWaste = () => {
             onChange={(e) => updateFormInput({ ...formInput, weight: e.target.value })}
           />
           <input
-            placeholder="Total Project Amount (in FIL)"
+            placeholder="Total Project Amount (in HBAR)"
             className="mt-5 border rounded p-4 text-xl"
             onChange={(e) => updateFormInput({ ...formInput, price: e.target.value })}
           />
